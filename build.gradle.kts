@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     id("com.diffplug.spotless") version "6.22.0" apply true
     id("io.gitlab.arturbosch.detekt") version "1.19.0" apply true
+    alias(libs.plugins.androidLibrary) apply false
 }
 
 allprojects {
