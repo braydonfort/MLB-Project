@@ -15,4 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "MLBNewsPlayground"
 include(":app")
- 
+include(":domain")
+include(":networking")
+include(":database")
+include(":di")

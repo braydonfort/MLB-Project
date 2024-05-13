@@ -1,21 +1,17 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
 }
 
 android {
-    namespace = "com.mlb.news.playground"
+    namespace = "com.example.database"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.mlb.news.playground"
-        minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -38,21 +34,9 @@ android {
 
 dependencies {
 
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation(libs.gson)
-
-    implementation("io.ktor:ktor-client-android:1.6.7")
-    implementation("io.ktor:ktor-client-serialization:1.6.7")
-
-    implementation("io.coil-kt:coil:2.5.0")
-
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("com.google.android.material:material:1.10.0")
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
