@@ -40,4 +40,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //Koin
+    implementation(libs.koin)
+
+    //Ktor
+    //ktor
+    implementation(libs.ktor)
+    implementation(libs.ktor.serialization)
+
+    //Modules
+    implementation(project(":app"))
+    implementation(project(":database"))
+    implementation(project(":networking"))
+    implementation(project(":domain"))
 }

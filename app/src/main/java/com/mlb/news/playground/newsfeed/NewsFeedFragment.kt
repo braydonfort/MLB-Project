@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class NewsFeedFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsArticleAdapter: NewsArticleAdapter
-    private lateinit var newsFeedRepository: NewsFeedRepository
+    private lateinit var newsFeedRepositoryImpl: com.example.domain.NewsFeedRepositoryImpl
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,13 +25,13 @@ class NewsFeedFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_news_feed, container, false)
         recyclerView = view.findViewById(R.id.rv_news_feed)
-        newsFeedRepository = NewsFeedRepository(requireContext())
+        newsFeedRepositoryImpl = com.example.domain.NewsFeedRepositoryImpl(requireContext())
 
         newsArticleAdapter = NewsArticleAdapter(emptyList())
         recyclerView.adapter = newsArticleAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        GlobalScope.launch { newsFeedRepository.refreshNewsArticles() }
+        GlobalScope.launch { newsFeedRepositoryImpl.refreshNewsArticles() }
 
         return view
     }
@@ -41,7 +41,7 @@ class NewsFeedFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        newsFeedRepository.newsLiveData.observe(
+        newsFeedRepositoryImpl.newsLiveData.observe(
             viewLifecycleOwner,
             { articles ->
                 Log.d("NewsFeedFragment", "articles retrieved")
@@ -52,7 +52,7 @@ class NewsFeedFragment : Fragment() {
                         Toast.LENGTH_LONG,
                     ).show()
                 } else {
-                    val data = newsFeedRepository.parseJson(articles.getOrThrow())
+                    val data = newsFeedRepositoryImpl.parseJson(articles.getOrThrow())
                     newsArticleAdapter.updateData(data.articles)
                 }
             },

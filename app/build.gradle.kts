@@ -41,8 +41,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.gson)
 
-    implementation("io.ktor:ktor-client-android:1.6.7")
-    implementation("io.ktor:ktor-client-serialization:1.6.7")
+    implementation(libs.ktor)
+    implementation(libs.ktor.serialization)
 
     implementation("io.coil-kt:coil:2.5.0")
 
@@ -56,4 +56,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //Modules
+    implementation(project(":domain"))
+    implementation(project(":di"))
+
 }

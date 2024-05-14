@@ -34,6 +34,10 @@ android {
 
 dependencies {
 
+    //ktor
+    implementation(libs.ktor)
+    implementation(libs.ktor.serialization)
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
