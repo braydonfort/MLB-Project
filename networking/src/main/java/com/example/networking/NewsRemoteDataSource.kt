@@ -1,4 +1,4 @@
-package com.mlb.news.playground.newsfeed
+package com.example.networking
 
 import androidx.lifecycle.MutableLiveData
 

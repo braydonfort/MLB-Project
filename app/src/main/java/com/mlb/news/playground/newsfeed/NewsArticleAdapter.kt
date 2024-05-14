@@ -12,9 +12,9 @@ import coil.load
 import com.google.android.material.card.MaterialCardView
 import com.mlb.news.playground.R
 
-class NewsArticleAdapter(private var articles: List<Article>) :
+class NewsArticleAdapter(private var articles: List<com.example.networking.Article>) :
     RecyclerView.Adapter<NewsArticleAdapter.ArticleViewHolder>() {
-    fun updateData(newArticles: List<Article>) {
+    fun updateData(newArticles: List<com.example.networking.Article>) {
         articles = newArticles
         notifyDataSetChanged()
     }
