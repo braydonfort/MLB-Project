@@ -1,13 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp")
 }
 
 android {
-    namespace = "com.example.networking"
+    namespace = "com.example.models"
     compileSdk = 34
 
     defaultConfig {
@@ -37,21 +34,10 @@ android {
 
 dependencies {
 
-    //ktor
-    implementation(libs.ktor)
-    implementation(libs.ktor.serialization)
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
-
-    //Modules
-    implementation(project(":models"))
 }

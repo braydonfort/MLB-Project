@@ -74,7 +74,7 @@ dependencies {
     //Modules
     implementation(project(":domain"))
     implementation(project(":di"))
-    implementation(project(":networking"))
+    implementation(project(":models"))
 
     //compose
     implementation(libs.androidx.activity.compose)

@@ -49,6 +49,7 @@ dependencies {
     //Modules
     implementation(project(":networking"))
     implementation(project(":database"))
+    implementation(project(":models"))
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.48")

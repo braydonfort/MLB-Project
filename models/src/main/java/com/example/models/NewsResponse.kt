@@ -1,4 +1,4 @@
-package com.example.networking
+package com.example.models
 
 data class NewsResponse(
     val header: String,

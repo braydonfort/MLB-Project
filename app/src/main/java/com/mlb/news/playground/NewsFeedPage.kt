@@ -31,7 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.example.networking.Article
+import com.example.models.Article
+
 @Composable
 fun NewsFeedPage(viewModel: NewsFeedViewModel = hiltViewModel()){
     val articleList by viewModel.articleList.collectAsState()
@@ -84,7 +85,7 @@ fun newsImage(url: String, contentDescription: String?, modifier: Modifier = Mod
 }
 
 @Composable
-fun ArticleItem(article: Article, onItemClicked: () -> Unit){
+fun ArticleItem(article: com.example.models.Article, onItemClicked: () -> Unit){
     Surface(modifier = Modifier
         .height(120.dp)
         .fillMaxWidth()
