@@ -6,6 +6,8 @@ plugins {
     id("com.diffplug.spotless") version "6.22.0" apply true
     id("io.gitlab.arturbosch.detekt") version "1.19.0" apply true
     alias(libs.plugins.androidLibrary) apply false
+    id("com.google.dagger.hilt.android") version "2.48" apply false
+    id("com.google.devtools.ksp") version "1.9.23-1.0.20" apply false
 }
 
 allprojects {
