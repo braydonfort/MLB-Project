@@ -1,19 +1,19 @@
 package com.mlb.news.playground
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.mlb.news.playground.newsfeed.NewsFeedFragment
+import com.mlb.news.playground.ui.theme.MLBNewsPlaygroundTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        if (savedInstanceState == null) {
-            // Load the NewsFeedFragment
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, NewsFeedFragment())
-                .commit()
+        setContent {
+            MLBNewsPlaygroundTheme {
+                NewsFeedPage()
+            }
         }
     }
 }

@@ -2,6 +2,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -34,6 +37,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
 }
 
 dependencies {
@@ -57,8 +66,39 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    implementation("androidx.lifecycle:lifecycle-livedata:2.4.0")
+
+    //lifecyle viewmodel
+    implementation(libs.androidx.lifecycle.viewmodel)
+
     //Modules
     implementation(project(":domain"))
     implementation(project(":di"))
+    implementation(project(":networking"))
+
+    //compose
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+
+//    //Koin
+//    implementation(libs.koin)
+//    // Koin core features
+//    implementation("io.insert-koin:koin-core:3.5.6")
+//    implementation("io.insert-koin:koin-androidx-compose:3.5.6")
+
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.7")
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
+
 
 }

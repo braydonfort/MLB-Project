@@ -1,6 +1,5 @@
-package com.example.domain
+package com.example.domain.repo
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.networking.NewsRemoteDataSource
@@ -9,8 +8,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NewsFeedRepositoryImpl(private val context: Context, private val newsRemoteDataSource: NewsRemoteDataSource): NewsFeedRepository {
+class NewsFeedRepositoryImpl @Inject constructor(private val newsRemoteDataSource: NewsRemoteDataSource):
+    NewsFeedRepository {
     override val newsLiveData = MutableLiveData<Result<String>>()
 
     override suspend fun refreshNewsArticles() {
@@ -22,7 +23,7 @@ class NewsFeedRepositoryImpl(private val context: Context, private val newsRemot
                 fetchNews()
 
                 MainScope().launch {
-                    remoteNewsLiveData.observeForever { news ->
+                    remoteNewsLiveData.observeForever{ news ->
                         if (news.isFailure) {
                             newsLiveData.postValue(Result.failure(news.exceptionOrNull()!!))
                         } else {
