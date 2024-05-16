@@ -43,9 +43,6 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    //Koin
-    implementation(libs.koin)
-
     //Ktor
     implementation(libs.ktor)
     implementation(libs.ktor.serialization)

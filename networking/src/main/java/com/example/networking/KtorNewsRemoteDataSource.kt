@@ -29,9 +29,9 @@ class KtorNewsRemoteDataSource @Inject constructor(
                 if (skipNetworkCall) {
                     loadJsonFromAssets()
                 } else {
-                    client.get<String> {
-                        url("https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/news")
-                    }
+                        client.get<String> {
+                            url("https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/news")
+                        }
                 }
             }
                 .onSuccess {

@@ -53,7 +53,7 @@ dependencies {
     implementation(libs.ktor)
     implementation(libs.ktor.serialization)
 
-    implementation("io.coil-kt:coil:2.5.0")
+    implementation(libs.coil)
 
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.10.0")
@@ -84,12 +84,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-//    //Koin
-//    implementation(libs.koin)
-//    // Koin core features
-//    implementation("io.insert-koin:koin-core:3.5.6")
-//    implementation("io.insert-koin:koin-androidx-compose:3.5.6")
-
     implementation("androidx.compose.runtime:runtime-livedata:1.6.7")
 
     //hilt
@@ -99,6 +93,10 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+    //MockK
+    testImplementation("io.mockk:mockk:1.13.2")
+    androidTestImplementation ("io.mockk:mockk-android:1.13.2")
 
 
 }

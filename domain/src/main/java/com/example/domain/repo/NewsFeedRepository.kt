@@ -10,7 +10,6 @@ interface NewsFeedRepository {
     suspend fun refreshNewsArticles()
     fun parseJson(jsonString: String): NewsResponse
 
-    suspend fun getCachedArticles(): Flow<List<Article>>?
+    suspend fun getCachedArticles(): List<Article>
 
-    suspend fun storeArticles(article: List<Article>)
 }
