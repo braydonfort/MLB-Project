@@ -7,6 +7,10 @@ import com.example.models.Category
 import com.example.models.Image
 import com.example.models.Links
 
+/**
+ * ArticlesEntity
+ * Database Entity for the Articles Table
+ */
 @Entity(tableName = "articles_table")
 data class ArticlesEntity(
     @PrimaryKey

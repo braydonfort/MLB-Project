@@ -94,9 +94,14 @@ dependencies {
     //Coil
     implementation("io.coil-kt:coil-compose:2.6.0")
 
-    //MockK
-    testImplementation("io.mockk:mockk:1.13.2")
-    androidTestImplementation ("io.mockk:mockk-android:1.13.2")
+    //Espresso
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-accessibility:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-web:3.5.1")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.7")
+
 
 
 }

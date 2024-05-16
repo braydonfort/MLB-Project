@@ -26,8 +26,17 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * NewsFeedRepositoryImpl
+ * Implementation Class for NewsFeedRepository
+ * @see[NewsFeedRepository]
+ * @param[NewsRemoteDataSource]
+ * @param[ArticlesDao]
+ */
+
 class NewsFeedRepositoryImpl @Inject constructor(private val newsRemoteDataSource: NewsRemoteDataSource, private val articlesDao: ArticlesDao):
     NewsFeedRepository {
+
     override val newsLiveData = MutableLiveData<Result<String>>()
     override suspend fun refreshNewsArticles() {
         Log.d("NewsFeedRepository", "refreshNewsArticles")

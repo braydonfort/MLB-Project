@@ -7,6 +7,10 @@ import com.example.database.typeconverters.CategoriesTypeConverter
 import com.example.database.typeconverters.ImagesTypeConverter
 import com.example.database.typeconverters.LinksTypeConverter
 
+/**
+ * MLBNewsPlaygroundDatabase
+ * Room Database for App
+ */
 @Database(entities = [ArticlesEntity::class], version = 1)
 @TypeConverters(CategoriesTypeConverter::class,ImagesTypeConverter::class,LinksTypeConverter::class)
 abstract class MlbNewsPlaygroundDatabase: RoomDatabase() {

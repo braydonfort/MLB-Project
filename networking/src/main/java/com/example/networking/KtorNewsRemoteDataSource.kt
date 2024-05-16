@@ -16,6 +16,15 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * KtorNewsRemoteDataSource
+ * Implementation of handling network requests
+ * @see[NewsRemoteDataSource]
+ * @param[HttpClient]
+ * @param[Context]
+ * @param[Boolean]
+ */
+
 class KtorNewsRemoteDataSource @Inject constructor(
     private val client: HttpClient,
     private val context: Context,

@@ -6,6 +6,9 @@ import com.example.models.Image
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Room type converter for List<Image> in Articles Entity
+ */
 class ImagesTypeConverter {
     private val gson = Gson()
 

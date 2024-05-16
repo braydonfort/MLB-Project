@@ -19,15 +19,28 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * NewsFeedViewModel
+ * View Model For News Feed Page
+ *  @param[NewsFeedRepository]
+ *  @param[CheckForInternetUseCase]
+ */
+
+
 @HiltViewModel
 class NewsFeedViewModel @Inject constructor(
     private val newsFeedRepository: NewsFeedRepository,
     private val checkForInternetUseCase: CheckForInternetUseCase): ViewModel() {
 
-    var articleList = MutableStateFlow<List<Article>>(emptyList())
+    var articleList = MutableStateFlow<List<Article>>(listOf())
     val internetConnection = MutableStateFlow<Boolean>(true)
-    val newsResponse = newsFeedRepository.newsLiveData
+    private val newsResponse = newsFeedRepository.newsLiveData
 
+    /**
+     * Function to update articleList used in the News Feed Page
+     * If internet is working get the freshly fetched list
+     * If no internet or failed network call try to get cached list if there is one
+     */
      suspend fun setList(){
              try {
                  newsFeedRepository.refreshNewsArticles()
@@ -52,9 +65,12 @@ class NewsFeedViewModel @Inject constructor(
              }
      }
 
+    /**
+     * Function to check for internet connection
+     */
      fun checkForInternet(context: Context){
         viewModelScope.launch {
-            internetConnection.value = checkForInternetUseCase.execute(context).first()
+            internetConnection.emit(checkForInternetUseCase.execute(context).first())
         }
     }
 

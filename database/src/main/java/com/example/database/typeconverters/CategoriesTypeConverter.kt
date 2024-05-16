@@ -5,6 +5,9 @@ import com.example.models.Category
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Room type converter for List<Catergory> in Articles Entity
+ */
 class CategoriesTypeConverter {
     private val gson = Gson()
 
