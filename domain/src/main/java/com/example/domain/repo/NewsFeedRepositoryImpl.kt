@@ -29,7 +29,6 @@ import javax.inject.Inject
 class NewsFeedRepositoryImpl @Inject constructor(private val newsRemoteDataSource: NewsRemoteDataSource, private val articlesDao: ArticlesDao):
     NewsFeedRepository {
     override val newsLiveData = MutableLiveData<Result<String>>()
-
     override suspend fun refreshNewsArticles() {
         Log.d("NewsFeedRepository", "refreshNewsArticles")
             newsRemoteDataSource.apply {
@@ -37,10 +36,13 @@ class NewsFeedRepositoryImpl @Inject constructor(private val newsRemoteDataSourc
                   MainScope().launch {
                     remoteNewsLiveData.observeForever{ news ->
                     if (news.isFailure) {
-                        newsLiveData.postValue(Result.failure(news.exceptionOrNull()!!))
+                            newsLiveData.postValue(Result.failure(news.exceptionOrNull()!!))
                     } else {
                         Log.d("NewsFeedRepository", "news fetch successful")
-                        newsLiveData.postValue(Result.success(news.getOrThrow()))
+                        CoroutineScope(Dispatchers.IO).launch{
+                            newsLiveData.postValue(Result.success(news.getOrThrow()))
+                            articlesDao.insertArticle(parseJson(news.getOrThrow()).articles.map { it.toArticlesEntity() })
+                        }
                       }
                     }
                   }
@@ -52,11 +54,12 @@ class NewsFeedRepositoryImpl @Inject constructor(private val newsRemoteDataSourc
         return Gson().fromJson(jsonString, type)
     }
 
-    override suspend fun getCachedArticles(): Flow<List<Article>>? {
-        return flow {articlesDao.getCachedArticles().first().toArticle()}
+    override suspend fun getCachedArticles(): List<Article> {
+        val articleList = articlesDao.getCachedArticles()
+       return if (articleList.isNotEmpty()) {
+             articleList.map { it.toArticle()
+             }
+        } else { emptyList<Article>() }
     }
 
-    override suspend fun storeArticles(article: List<Article>) = withContext(Dispatchers.IO) {
-        articlesDao.insertArticle(article.map { it.toArticlesEntity() })
-    }
 }

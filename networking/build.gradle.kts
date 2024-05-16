@@ -54,4 +54,9 @@ dependencies {
 
     //Modules
     implementation(project(":models"))
+
+    //MockK
+    testImplementation("io.mockk:mockk:1.13.2")
+    androidTestImplementation ("io.mockk:mockk-android:1.13.2")
+
 }

@@ -60,4 +60,8 @@ dependencies {
 
     //modules
     implementation(project(":models"))
+
+
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("com.google.truth:truth:1.1.5")
 }

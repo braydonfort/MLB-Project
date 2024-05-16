@@ -54,4 +54,12 @@ dependencies {
     //hilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
+
+    //MockK
+    testImplementation("io.mockk:mockk:1.13.2")
+    androidTestImplementation ("io.mockk:mockk-android:1.13.2")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("com.google.truth:truth:1.1.5")
+
 }

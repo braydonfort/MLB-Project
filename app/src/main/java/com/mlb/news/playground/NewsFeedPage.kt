@@ -17,8 +17,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,13 +34,17 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.example.models.Article
+import kotlinx.coroutines.launch
 
 @Composable
 fun NewsFeedPage(viewModel: NewsFeedViewModel = hiltViewModel()){
     val articleList by viewModel.articleList.collectAsState()
     val internetConnection by viewModel.internetConnection.collectAsState()
     val context = LocalContext.current
-    viewModel.setList()
+    val coroutineScope = rememberCoroutineScope()
+    LaunchedEffect(key1 = coroutineScope) {
+        viewModel.setList()
+    }
     viewModel.checkForInternet(context)
 
     Column {
