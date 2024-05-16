@@ -26,8 +26,6 @@ class CheckForInternetUseCaseImplTest {
     lateinit var connectivityManager: ConnectivityManager
     @RelaxedMockK
     lateinit var network: Network
-    @RelaxedMockK
-    lateinit var networkCapabilities: NetworkCapabilities
 
     @Before
     fun setUp(){
