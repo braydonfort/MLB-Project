@@ -22,9 +22,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ArticlesDaoTest {
 
-//    @get:Rule
-//    val rule = InstantTaskExecutorRule()
-
     private lateinit var database: MlbNewsPlaygroundDatabase
     private lateinit var articlesDao: ArticlesDao
 

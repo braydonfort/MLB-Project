@@ -1,5 +1,9 @@
 package com.example.models
 
+/**
+ * NewsResponse.kt
+ * Has Data classes for the NewsResponse from endpoint
+ */
 data class NewsResponse(
     val header: String,
     val link: Link,

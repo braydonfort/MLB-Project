@@ -7,7 +7,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
+/**
+ * CheckForInternetUseCaseImpl
+ * Implementation class to check for internet connection
+ * @see[CheckForInternetUseCase]
+ * execute has @param[Context]
+ */
 class CheckForInternetUseCaseImpl @Inject constructor(): CheckForInternetUseCase {
     override suspend fun execute(context: Context): Flow<Boolean> = flow {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

@@ -7,6 +7,10 @@ import androidx.room.Query
 import com.example.models.Article
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * ArticlesDao
+ * Dao interface for database functions
+ */
 @Dao
 interface ArticlesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

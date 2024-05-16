@@ -6,6 +6,9 @@ import com.example.models.Links
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Room type converter for Link in Articles Entity
+ */
 class LinksTypeConverter {
     private val gson = Gson()
 
